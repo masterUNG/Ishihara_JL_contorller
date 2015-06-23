@@ -4,14 +4,33 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class ShowScoreActivity extends AppCompatActivity {
+
+    //Explicit
+    TextView showScoreTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_score);
-    }
+
+        //Initial Widget
+        showScoreTextView = (TextView) findViewById(R.id.txtShowScore);
+
+        //Show Score
+        showScore();
+
+    }   // onCreate
+
+    private void showScore() {
+
+        //Receive from Intent
+        int intMyScore = getIntent().getExtras().getInt("Score");
+        showScoreTextView.setText(Integer.toString(intMyScore) + "/10");
+
+    }   //showScore
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -34,4 +53,4 @@ public class ShowScoreActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-}
+}   // Main Class
