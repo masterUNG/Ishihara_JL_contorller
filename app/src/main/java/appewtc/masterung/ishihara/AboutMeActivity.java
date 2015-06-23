@@ -1,55 +1,34 @@
 package appewtc.masterung.ishihara;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
-public class ShowScoreActivity extends AppCompatActivity {
-
-    //Explicit
-    TextView showScoreTextView;
+public class AboutMeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_score);
-
-        //Initial Widget
-        showScoreTextView = (TextView) findViewById(R.id.txtShowScore);
-
-        //Show Score
-        showScore();
-
+        setContentView(R.layout.activity_about_me);
     }   // onCreate
 
-    public void clickPlay(View view) {
-        Intent objIntent = new Intent(ShowScoreActivity.this, MainActivity.class);
+    public void clickWeb(View view) {
+
+        //Show Intent Action View
+        Intent objIntent = new Intent(Intent.ACTION_VIEW);
+        objIntent.setData(Uri.parse("http://androidthai.in.th/about-me.html"));
         startActivity(objIntent);
-        finish();
-    }
 
-    public void clickExit(View view) {
-        finish();
-    }
-
-
-
-    private void showScore() {
-
-        //Receive from Intent
-        int intMyScore = getIntent().getExtras().getInt("Score");
-        showScoreTextView.setText(Integer.toString(intMyScore) + "/10");
-
-    }   //showScore
+    }   //clickWeb
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_show_score, menu);
+        getMenuInflater().inflate(R.menu.menu_about_me, menu);
         return true;
     }
 
