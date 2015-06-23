@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private RadioButton choice1RadioButton, choice2RadioButton,
             choice3RadioButton, choice4RadioButton;
     private Button answerButton;
-
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +34,26 @@ public class MainActivity extends AppCompatActivity {
         //Button Controller
         buttonController();
 
+        //Radio Controller
+        radioController();
+
 
     }   // onCreate
+
+    private void radioController() {
+
+        choiceRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+                //Sound Effect
+                MediaPlayer radioMediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.effect_btn_shut);
+                radioMediaPlayer.start();
+
+            }   // event
+        });
+
+    }   // radioController
 
     private void buttonController() {
 
